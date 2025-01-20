@@ -1,6 +1,7 @@
-package com.LiteraAlura.Literatura.service;
+package com.LiterAlura.Literatura.service;
 
-import com.LiteraAlura.Literatura.dto.LibroDto;
+
+import com.LiterAlura.Literatura.dto.LibroDto;
 
 import java.util.Optional;
 
@@ -68,6 +69,6 @@ public class GutendexService {
     }
 
     private static Optional<LibroDto> consultar(String consulta) {
-        return ConversorService.JsonALibroDto(ClienteService.obtenerRespuesta(URL_BASE + consulta));
+        return Conversor.JsonALibroDTO(ClienteHTTP.obtenerRespuesta(URL_BASE + consulta));
     }
 }

@@ -1,6 +1,7 @@
-package com.LiteraAlura.Literatura.model;
+package com.LiterAlura.Literatura.model;
 
-import com.LiteraAlura.Literatura.dto.LibroDto;
+
+import com.LiterAlura.Literatura.dto.LibroDto;
 import jakarta.persistence.*;
 
 import java.util.Map;
@@ -11,24 +12,23 @@ public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_libro", nullable = false)
+    @Column(name="id_libro", nullable = false)
     private Long id;
 
-    @Column(name = "titulo", nullable = false)
+    @Column(name="titulo", nullable = false)
     private String titulo;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_autor", nullable = false)
     private Autor autor;
 
-    @Column(name = "idioma", nullable = false)
+    @Column(name="idioma", nullable = false)
     private String idioma;
 
-    @Column(name = "numero_descargas", nullable = true)
+    @Column(name="numero_descargas", nullable = true)
     private Long numeroDescargas;
 
-    public Libro() {
-    }
+    public Libro(){}
 
     public Libro(LibroDto libroDto) {
         this.titulo = libroDto.titulo();

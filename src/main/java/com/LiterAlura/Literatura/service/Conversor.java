@@ -1,18 +1,19 @@
-package com.LiteraAlura.Literatura.service;
+package com.LiterAlura.Literatura.service;
 
 
-import com.LiteraAlura.Literatura.dto.LibroDto;
+import com.LiterAlura.Literatura.dto.LibroDto;
+import com.LiterAlura.Literatura.dto.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.Optional;
 
-public class ConversorService {
+public class Conversor {
     private static final ObjectMapper objetoMapper = new ObjectMapper();
 
-    public static Optional<LibroDto> JsonALibroDto(String json) {
+    public static Optional<LibroDto> JsonALibroDTO(String json) {
         JsonNode nodoRaiz;
         try {
             nodoRaiz = objetoMapper.readTree(json);
@@ -46,9 +47,9 @@ public class ConversorService {
         JsonNode autorPrincipal = obtenerPrimerObjeto(nodoLibro, "authors");
         JsonNode idiomaPrincipal = obtenerPrimerObjeto(nodoLibro, "languages");
 
-        LibroDto libroDto = convertirNodoJsonALibroDto(nodoLibro, autorPrincipal, idiomaPrincipal);
+        LibroDto libroDTO = convertirNodoJsonALibroDTO(nodoLibro, autorPrincipal, idiomaPrincipal);
 
-        return Optional.of(libroDto);
+        return Optional.of(libroDTO);
     }
 
     private static JsonNode obtenerPrimerObjeto(JsonNode nodoLibro, String nombrePropiedad) {
@@ -61,7 +62,7 @@ public class ConversorService {
         return null;
     }
 
-    private static LibroDto convertirNodoJsonALibroDto(JsonNode nodoJsonLibro, JsonNode autor, JsonNode idioma) {
+    private static LibroDto convertirNodoJsonALibroDTO(JsonNode nodoJsonLibro, JsonNode autor, JsonNode idioma) {
         ((ObjectNode) nodoJsonLibro).remove("authors");
         ((ObjectNode) nodoJsonLibro).set("authors", autor);
         ((ObjectNode) nodoJsonLibro).remove("languages");

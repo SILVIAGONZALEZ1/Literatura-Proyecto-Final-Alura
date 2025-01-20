@@ -1,4 +1,4 @@
-package com.LiteraAlura.Literatura.dto;
+package com.LiterAlura.Literatura.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

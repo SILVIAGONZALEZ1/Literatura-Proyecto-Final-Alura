@@ -1,8 +1,8 @@
-package com.LiteraAlura.Literatura;
+package com.LiterAlura.Literatura;
 
-import com.LiteraAlura.Literatura.principal.PrincipalApp;
-import com.LiteraAlura.Literatura.repository.AutorRepository;
-import com.LiteraAlura.Literatura.repository.LibroRepository;
+import com.LiterAlura.Literatura.principal.Principal;
+import com.LiterAlura.Literatura.repository.LibroRepository;
+import com.LiterAlura.Literatura.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,21 +12,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LiteraturaApplication implements CommandLineRunner {
 
 	@Autowired
-	private LibroRepository libroRepository;
+	private LibroRepository libroRepositorio;
 	@Autowired
-	private AutorRepository autorRepository;
+	private AutorRepository autorRepositorio;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiteraturaApplication.class, args);
 	}
-
 	@Override
 	public void run(String... args) throws Exception {
-		PrincipalApp principal = new PrincipalApp(libroRepository, autorRepository);
+		Principal principal = new Principal(libroRepositorio, autorRepositorio);
 		principal.ejecutar();
 	}
 }
-
 
 
 
